@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; }
+        .container { width: 300px; margin: 50px auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #333; }
+        input, button { width: calc(100% - 22px); padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px; }
+        button { background-color: #007bff; color: #fff; border: none; cursor: pointer; }
+        button:hover { background-color: #0056b3; }
+        .result { margin-top: 20px; font-size: 18px; text-align: center; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Simple Calculator</h1>
+        <form action="/calculate" method="POST">
+            <input type="number" name="num1" placeholder="Enter first number" value="<%= num1 %>">
+            <input type="text" name="operator" placeholder="Enter operator (+, -, *, /)" value="<%= operator %>">
+            <input type="number" name="num2" placeholder="Enter second number" value="<%= num2 %>">
+            <button type="submit">Calculate</button>
+        </form>
+        <% if (result !== null) { %>
+            <div class="result">
+                <% if (typeof result === 'string' && result.startsWith('Invalid')) { %>
+                    <p class="error"><%= result %></p>
+                <% } else { %>
+                    <p>Result: <%= result %></p>
+                <% } %>
+            </div>
+        <% } %>
+    </div>
+</body>
+</html>
+
