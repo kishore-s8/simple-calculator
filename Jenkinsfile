@@ -29,8 +29,11 @@ pipeline {
 
         stage('Build Code') {
             steps {
+                tool name: 'NodeJS', type: 'NodeJSInstallation'
+                script {
                 sh 'npm install'
                 sh 'npm run build'
+            }
             }
         }
 
