@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   calculator:
-    image: ${imageTag}  # Replace with the correct tag if necessary
+    image: web-calculator:latest  # Replace with the correct tag if necessary
     ports:
       - "3000:3000"  # Map container port 3000 to host port 3000
     environment:
