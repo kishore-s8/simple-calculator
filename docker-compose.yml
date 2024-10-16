@@ -6,4 +6,5 @@ services:
     ports:
       - "3000:3000"  # Map container port 3000 to host port 3000
     environment:
+         NODE_ENV: production
       # Add any necessary environment variables here
