@@ -3,7 +3,7 @@ version: '3.8'
 services:
   calculator:
     container_name: calculator-service  # Use Jenkins build number
-    image: web-calculator                # Use Jenkins build number
+    image: web-calculator:${DOCKER_TAG}        # Use Jenkins build number
     ports:
       - "3000:3000"                                     # Map container port 3000 to host port 3000
     hostname: calculator                                 # Set the hostname for the container
