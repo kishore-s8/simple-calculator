@@ -2,9 +2,9 @@ version: '3.8'
 
 services:
   calculator:
-    image: web-calculator:latest  # Replace with the correct tag if necessary
+    container_name: calculator-service-${BUILD_NUMBER}  # Use Jenkins build number
+    image: web-calculator:${BUILD_NUMBER}                # Use Jenkins build number
     ports:
-      - "3000:3000"  # Map container port 3000 to host port 3000
-    environment:
-         NODE_ENV: production
-      # Add any necessary environment variables here
+      - "3000:3000"                                     # Map container port 3000 to host port 3000
+    hostname: public-web                                 # Set the hostname for the container
+    restart: unless-stopped                              # Restart policy
