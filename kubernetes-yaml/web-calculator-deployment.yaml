@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-calculator
+  labels:
+    app: web-calculator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-calculator
+  template:
+    metadata:
+      labels:
+        app: web-calculator
+    spec:
+      containers:
+        - name: web-calculator
+          image: web-calculator:${BUILD_NUMBER}
+          imagePullPolicy: Never  # Ensure it uses the local image
+          ports:
+            - containerPort: 3000
