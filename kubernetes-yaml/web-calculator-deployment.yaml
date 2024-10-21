@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: web-calculator
-          image: web-calculator:${BUILD_NUMBER}  # Make sure this tag exists locally.
+          image: web-calculator:latest  # Make sure this tag exists locally.
           imagePullPolicy: Never  # Ensures the local image is used.
           ports:
             - containerPort: 3000
