@@ -9,4 +9,4 @@ services:
     hostname: calculator                
     restart: unless-stopped             
     volumes:
-      - /home/ubuntu/calculator_data:/app/data  
+      - /home/ubuntu/calculator_data/.calculator_data:/app/data  
