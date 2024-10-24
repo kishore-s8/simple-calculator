@@ -15,6 +15,8 @@ COPY --from=build /usr/src/app .
 
 RUN npm prune --production
 
+VOLUME ["/app/data"]
+
 EXPOSE 3000
 
 CMD ["node", "server.js"]
