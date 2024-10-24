@@ -2,9 +2,11 @@ version: '3.8'
 
 services:
   calculator:
-    container_name: calculator-service  # Use Jenkins build number
-    image: web-calculator:latest        # Use Jenkins build number
+    container_name: calculator-service  
+    image: web-calculator:latest        
     ports:
-      - "3000:3000"                                     # Map container port 3000 to host port 3000
-    hostname: calculator                                 # Set the hostname for the container
-    restart: unless-stopped                              # Restart policy
+      - "3000:3000"                     
+    hostname: calculator                
+    restart: unless-stopped             
+    volumes:
+      - /home/ubuntu/calculator_data:/app/data  
