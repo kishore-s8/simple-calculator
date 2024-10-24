@@ -15,9 +15,8 @@ COPY --from=build /usr/src/app .
 
 RUN npm prune --production
 
-RUN mkdir -p /app/data  # Ensure the /app/data directory is created
-
-VOLUME ["/app/data"]
+# Ensure the /usr/src/app/data directory is created
+RUN mkdir -p /usr/src/app/data
 
 EXPOSE 3000
 
