@@ -2,11 +2,14 @@ version: '3.8'
 
 services:
   calculator:
-    container_name: calculator-service  
-    image: web-calculator:latest        
+    container_name: calculator-service
+    image: web-calculator:${IMAGE_TAG}   # Dynamic tag from .env file
     ports:
-      - "3000:3000"                     
-    hostname: calculator                
-    restart: unless-stopped             
-    volumes:
-      - /home/ubuntu/calculator_data/.calculator_data:/usr/src/app/data  
+      - "3000:3000"
+    hostname: calculator
+    restart: unless-stopped
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+        order: start-first  # Ensures zero downtime during update
