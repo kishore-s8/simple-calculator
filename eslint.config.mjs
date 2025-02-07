@@ -12,16 +12,21 @@ export default [
       ecmaVersion: "latest",
       sourceType: "module",
       globals: {
-        ...globals.node, // Include Node.js globals
+        ...globals.node, // Include Node.js globals like __dirname
         ...globals.browser
       }
     },
     rules: {
-      "no-undef": "off", // Prevents errors for Node.js globals like __dirname
-      "@typescript-eslint/no-require-imports": "off" // Allows `require()`
+      "@typescript-eslint/no-require-imports": "off", // ✅ Allows `require()`
+      "react/react-in-jsx-scope": "off" // ✅ Avoid React import errors
     }
   },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
+  {
+    ...pluginReact.configs.flat.recommended,
+    settings: {
+      react: { version: "detect" } // ✅ Fixes React version warning
+    }
+  }
 ];
