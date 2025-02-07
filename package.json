@@ -1,10 +1,10 @@
 {
   "name": "web-calculator",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -12,5 +12,21 @@
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^4.19.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaamHorakeri/simple-calculator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RaamHorakeri/simple-calculator/issues"
+  },
+  "homepage": "https://github.com/RaamHorakeri/simple-calculator#readme",
+  "description": "",
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "eslint": "^9.19.0",
+    "eslint-plugin-react": "^7.37.4",
+    "globals": "^15.14.0",
+    "typescript-eslint": "^8.23.0"
   }
 }
