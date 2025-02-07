@@ -12,14 +12,14 @@ export default [
       ecmaVersion: "latest",
       sourceType: "module",
       globals: {
-        ...globals.node, // ✅ Includes Node.js globals
+        ...globals.node,
         ...globals.browser,
       }
     },
     rules: {
-      "@typescript-eslint/no-require-imports": "off", // ✅ Explicitly disable this rule
-      "@typescript-eslint/no-var-requires": "off", // ✅ Ensures `require()` works in TS/JS
-      "react/react-in-jsx-scope": "off" // ✅ Avoids React import errors
+      "@typescript-eslint/no-require-imports": "off", // ✅ Disables require() restriction
+      "@typescript-eslint/no-var-requires": "off", // ✅ Ensures require() works
+      "react/react-in-jsx-scope": "off"
     }
   },
   pluginJs.configs.recommended,
@@ -27,7 +27,7 @@ export default [
   {
     ...pluginReact.configs.flat.recommended,
     settings: {
-      react: { version: "detect" } // ✅ Fixes React version warning
+      react: { version: "18.0" } // ✅ Explicit React version (avoid detect warning)
     }
   }
 ];
