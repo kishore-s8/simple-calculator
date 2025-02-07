@@ -15,6 +15,11 @@ app.use(express.json()); // To handle JSON payloads
 // Serve static files (like CSS) from the "public" directory
 app.use(express.static(path.join(process.cwd(), 'public')));
 
+// Health check endpoint
+app.get('/health', (req, res) => {
+    res.status(200).send('OK'); // Simple health check response
+});
+
 // Home route
 app.get('/', (req, res) => {
     res.render('index', { result: null, num1: '', operator: '', num2: '' });
