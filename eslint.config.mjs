@@ -14,6 +14,9 @@ export default [
       globals: {
         ...globals.node,
         ...globals.browser,
+        jest: true,  // Add Jest globals
+        test: true,  // Add Jest globals
+        expect: true  // Add Jest globals
       }
     },
     rules: {
