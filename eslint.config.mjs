@@ -7,18 +7,19 @@ import pluginReact from "eslint-plugin-react";
 export default [
   {
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
-    ignores: ["node_modules", "kubernetes-yaml"], // Ignore unnecessary files
+    ignores: ["node_modules", "kubernetes-yaml"],
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
       globals: {
-        ...globals.node, // Include Node.js globals like __dirname
-        ...globals.browser
+        ...globals.node, // ✅ Includes Node.js globals
+        ...globals.browser,
       }
     },
     rules: {
-      "@typescript-eslint/no-require-imports": "off", // ✅ Allows `require()`
-      "react/react-in-jsx-scope": "off" // ✅ Avoid React import errors
+      "@typescript-eslint/no-require-imports": "off", // ✅ Explicitly disable this rule
+      "@typescript-eslint/no-var-requires": "off", // ✅ Ensures `require()` works in TS/JS
+      "react/react-in-jsx-scope": "off" // ✅ Avoids React import errors
     }
   },
   pluginJs.configs.recommended,
