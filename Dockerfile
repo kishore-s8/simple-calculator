@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 # Copy only necessary files for dependencies
 COPY package*.json ./
 
-# Install only production dependencies
+# Install production dependencies
 RUN npm ci --only=production
 
 # Copy the rest of the application files
@@ -29,7 +29,7 @@ RUN apk add --no-cache --update nodejs && \
 WORKDIR /usr/src/app
 
 # Copy the built application from the build stage
-COPY --from=build /usr/src/app ./
+COPY --from=build /usr/src/app ./ 
 
 # Remove any remaining unnecessary files
 RUN rm -rf node_modules/.cache && \
