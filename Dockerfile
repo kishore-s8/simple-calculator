@@ -1,14 +1,20 @@
 # Stage 1: Build the application
 FROM node:18-alpine AS build
 
+# Set environment variable to production
+ENV NODE_ENV=production
+
 # Set working directory
 WORKDIR /usr/src/app
 
-# Copy only necessary files for dependencies
+# Install the latest npm version (if needed)
+RUN npm install -g npm@latest
+
+# Copy package.json and package-lock.json for dependency installation
 COPY package*.json ./
 
-# Install production dependencies
-RUN npm ci --only=production
+# Install only production dependencies (modern alternative to --only=production)
+RUN npm ci --omit=dev
 
 # Copy the rest of the application files
 COPY . .
@@ -19,11 +25,10 @@ RUN npm prune --production && \
     find node_modules -name "*.map" -type f | xargs rm -rf
 
 # Stage 2: Minimal runtime image
-FROM alpine:3.18 AS production
+FROM node:18-alpine AS production
 
-# Install Node.js runtime only (exclude npm)
-RUN apk add --no-cache --update nodejs && \
-    rm -rf /var/cache/apk/*
+# Set environment variable to production
+ENV NODE_ENV=production
 
 # Set working directory
 WORKDIR /usr/src/app
@@ -38,5 +43,5 @@ RUN rm -rf node_modules/.cache && \
 # Expose the application port
 EXPOSE 3000
 
-# Run the application
+# Start the application
 CMD ["node", "server.js"]
