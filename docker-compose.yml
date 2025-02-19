@@ -3,7 +3,7 @@ version: '3.8'
 services:
   calculator:
     container_name: calculator-service
-    image: web-calculator:latest   # Dynamic tag from .env file
+    image: web-calculator:latest
     ports:
       - "3000:3000"
     hostname: calculator
@@ -12,4 +12,4 @@ services:
       replicas: 1
       update_config:
         parallelism: 1
-        order: start-first  # Ensures zero downtime during update
+        order: start-first  # Zero downtime update
