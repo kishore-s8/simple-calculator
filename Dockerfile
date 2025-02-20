@@ -40,5 +40,5 @@ RUN rm -rf node_modules/.cache && \
 # Expose the application port
 EXPOSE 3000
 
-Run the application
+# Run the application
 CMD ["node", "server.js"]
