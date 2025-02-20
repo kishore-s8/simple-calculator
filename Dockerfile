@@ -33,7 +33,7 @@ WORKDIR /usr/src/app
 # Copy the built application from the build stage
 COPY --from=build /usr/src/app ./ 
 
-Remove any remaining unnecessary files
+# Remove any remaining unnecessary files
 RUN rm -rf node_modules/.cache && \
     find . -type f \( -name "*.log" -o -name "*.md" -o -name "*.map" \) -delete
 
