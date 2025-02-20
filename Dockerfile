@@ -4,7 +4,7 @@ FROM node:18-alpine AS build
 # Set working directory
 WORKDIR /usr/src/app
 
-Copy only necessary files for dependencies
+# Copy only necessary files for dependencies
 COPY package*.json ./
 
 # Install production dependencies
