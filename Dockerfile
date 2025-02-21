@@ -11,8 +11,8 @@ WORKDIR /usr/src/app
 # RUN npm install && npm ci --only=production
 
 
-# Copy the rest of the application files
-COPY . .
+# # Copy the rest of the application files
+# COPY . .
 
 # # Clean up unnecessary files to reduce size
 RUN npm prune --production && \
