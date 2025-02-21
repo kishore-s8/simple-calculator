@@ -1,18 +1,18 @@
 # Stage 1: Build the application
 FROM node:18-alpine AS build
 
-# Set working directory
-WORKDIR /usr/src/app
+# # Set working directory
+# WORKDIR /usr/src/app
 
-# Copy only necessary files for dependencies
-COPY package*.json ./
+# # Copy only necessary files for dependencies
+# COPY package*.json ./
 
-# Install production dependencies
-RUN npm install && npm ci --only=production
+# # Install production dependencies
+# RUN npm install && npm ci --only=production
 
 
-# Copy the rest of the application files
-COPY . .
+# # Copy the rest of the application files
+# COPY . .
 
 # # Clean up unnecessary files to reduce size
 RUN npm prune --production && \
