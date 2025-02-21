@@ -45,29 +45,41 @@
 
 
 
-version: '3.8'
+# version: '3.8'
+
+# services:
+#   calculator:
+#     container_name: calculator-service
+#     image: web-calculator:latest
+#     ports:
+#       - "3000:3000"
+#     hostname: calculator
+#     restart: unless-stopped
+#     deploy:
+#       replicas: 1
+#       update_config:
+#         parallelism: 1
+#         order: start-first  # Zero downtime update
+
+#   calculator-temp:
+#     container_name: calculator-temp
+#     image: web-calculator:latest
+#     ports:
+#       - "3001:3000"  # Temporary instance on different port
+#     hostname: calculator-temp
+#     restart: no  # Stop after testing
+#     deploy:
+#       replicas: 0  # Default to 0 replicas, only created when needed
+
+
+version: "3.8"
 
 services:
-  calculator:
-    container_name: calculator-service
+  app:
+    container_name: calculator-app
     image: web-calculator:latest
     ports:
       - "3000:3000"
-    hostname: calculator
-    restart: unless-stopped
-    deploy:
-      replicas: 1
-      update_config:
-        parallelism: 1
-        order: start-first  # Zero downtime update
+    restart: always
 
-  calculator-temp:
-    container_name: calculator-temp
-    image: web-calculator:latest
-    ports:
-      - "3001:3000"  # Temporary instance on different port
-    hostname: calculator-temp
-    restart: no  # Stop after testing
-    deploy:
-      replicas: 0  # Default to 0 replicas, only created when needed
 
