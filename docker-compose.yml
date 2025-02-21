@@ -79,7 +79,7 @@ services:
     container_name: calculator-app-new
     image: web-calculator:latest
     ports:
-      - "3001:3000"
+      - "3000:3000"
     restart: always
 
 
