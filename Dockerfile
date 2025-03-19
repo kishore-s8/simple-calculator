@@ -4,11 +4,16 @@ FROM node:18-alpine AS build
 # Set working directory
 WORKDIR /usr/src/app
 
-# Copy only necessary files for dependencies
-COPY package*.json ./
+# Copy package.json and package-lock.json (if exists)
+COPY package.json ./
+COPY package-lock.json ./
 
 # Install production dependencies
-RUN npm ci --only=production
+RUN if [ -f package-lock.json ]; then \
+        npm ci --only=production; \
+    else \
+        npm install --only=production; \
+    fi
 
 # Copy the rest of the application files
 COPY . .
@@ -30,6 +35,9 @@ COPY --from=build /usr/src/app ./
 # Remove any remaining unnecessary files
 RUN rm -rf node_modules/.cache && \
     find . -type f \( -name "*.log" -o -name "*.md" -o -name "*.map" \) -delete
+
+# Set environment variable (optional)
+ENV NODE_ENV=production
 
 # Expose the application port
 EXPOSE 3000
