@@ -1,22 +1,24 @@
 # Stage 1: Build the application
 FROM node:18-alpine AS build
 
+# Install dependencies for native modules (if needed)
+RUN apk add --no-cache python3 make g++ 
+
 # Set working directory
 WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json (if exists)
-COPY package.json ./
-COPY package-lock.json ./
+# Copy package.json and package-lock.json
+COPY package.json package-lock.json ./
+
+# Ensure correct ownership (optional, for permission issues)
+RUN chown -R node:node /usr/src/app
+USER node
 
 # Install production dependencies
-RUN if [ -f package-lock.json ]; then \
-        npm ci --only=production; \
-    else \
-        npm install --only=production; \
-    fi
+RUN npm ci --only=production || npm install --only=production
 
 # Copy the rest of the application files
-COPY . .
+COPY --chown=node:node . .
 
 # Remove unnecessary files to reduce size
 RUN npm prune --production && \
