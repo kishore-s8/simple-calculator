@@ -1,6 +1,5 @@
 
 version: "3.8"
-
 services:
   app_new:
     container_name: calculator-app-new
