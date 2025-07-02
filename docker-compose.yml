@@ -1,5 +1,5 @@
-
 version: "3.8"
+
 services:
   app_new:
     container_name: calculator-app-new
@@ -13,5 +13,5 @@ services:
       BIFROST_ACCOUNT_PROFILE_API: ${BIFROST_ACCOUNT_PROFILE_API}
       ODIN_SECRET: ${ODIN_SECRET}
       ODIN_HOST: ${ODIN_HOST}
-
-
+    volumes:
+      - "/c/Users/Enfec Solutions/Downloads/dockerdata:/usr/src/app/dockerdata"
