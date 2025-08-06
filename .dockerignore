@@ -1,0 +1,6 @@
+node_modules/
+kubernetes-yaml/
+Jenkinsfile
+azure-pipelines.yml
+sonar-project.properties
+calculator.test.js
